@@ -17,6 +17,8 @@ app.use(bodyParser.json());
 
 routes(app);
 
+app.use(express.static('public'));
+
 app.get('/', (req, res) => res.send('Hi there!'));
 
 app.listen(PORT, () => console.log('Server is running!'));
