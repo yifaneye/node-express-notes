@@ -1,4 +1,4 @@
-import {createProject, listProject} from "../controllers/controller";
+import {createProject, deleteProject, listProject, retrieveProject, updateProject} from "../controllers/controller";
 
 const routes = app => {
 	app.route('/project')
@@ -6,9 +6,10 @@ const routes = app => {
 			next();
 		}, listProject)
 		.post(createProject);
-	app.route('/project/:itemID')
-		.put((req, res) => res.send('PUT success'))
-		.delete((req, res) => res.send('DELETE success'));
+	app.route('/project/:projectID')
+		.get(retrieveProject)
+		.put(updateProject)
+		.delete(deleteProject);
 };
 
 export default routes;
