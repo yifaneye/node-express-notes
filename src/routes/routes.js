@@ -1,13 +1,12 @@
+import {createProject, listProject} from "../controllers/controller";
+
 const routes = app => {
-	app.route('/item')
+	app.route('/project')
 		.get((req, res, next) => {
-			console.log(req);
 			next();
-		}, (req, res) => {
-			res.send('GET success');
-		})
-		.post((req, res) => res.send('POST success'));
-	app.route('/item/:itemID')
+		}, listProject)
+		.post(createProject);
+	app.route('/project/:itemID')
 		.put((req, res) => res.send('PUT success'))
 		.delete((req, res) => res.send('DELETE success'));
 };
